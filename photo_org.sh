@@ -21,6 +21,11 @@
 # - Look for DateTimeOriginal before FileModifyDate (DSCN0245.JPG)
 #
 # - Save picasaoriginal photos
+#
+# - Fix this:
+#    Copying IMG_2584.PNG from pics/goog_pics_2015/pics_2015/December 20, 2015/IMG_2584.PNG to pics3/2015/IMG/2584.PNG"/2015/IMG_2584.PNG"_______/2015/IMG_2584.PNG"_ 2015/IMG_2584.PNG"_ 2015/IMG_2584.PNG"_378307.PNGtouch: cannot touch 'pics3/2015/IMG/2584.PNG"/2015/IMG_2584.PNG"_______/2015/IMG_2584.PNG"_': No such file or directory
+#    touch: cannot touch '2015/IMG_2584.PNG"_': No such file or directory
+#    touch: cannot touch '2015/IMG_2584.PNG"_378307.PNG': No such file or directory
 
 source photo_org_date.sh
 source photo_org_model.sh

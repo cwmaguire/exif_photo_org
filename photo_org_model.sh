@@ -15,14 +15,12 @@ function model {
   # Too bad it didn't record the original
   if [[ -z ${model} ]] ; then
     exif_field model Software "${photo_path}"
-    #echo "Software for ${photo_path} is ${model}"
     # for "QuickTime 7.6.6"
     first_n_words model 1
   fi
 
   if [[ -z ${model} ]] ; then
     exif_field model LensModel "${photo_path}"
-    #echo "LensModel for ${photo_path} is ${model}"
     # for "iPhone 52 ...", "iPod touch ..."
     first_n_words model 2
   fi
@@ -60,7 +58,6 @@ function model {
   if [[ -z ${model} ]] ; then
     echo "Did not find model"
     exiftool -json -s "${photo_path}"
-    #exit 1
   fi
 
   model=${model/ /_/}
