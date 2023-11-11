@@ -15,7 +15,7 @@ function first_n_words {
   regex=
 
   for (( x=0 ; x < ${count} ; x+=1 )) ; do
-    regex+="[[:alpha:]]+${separator}+"
+    regex+="[[:alnum:]]+${separator}+"
   done
 
   while [[ ${var} =~ $regex ]] ; do

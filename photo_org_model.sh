@@ -3,11 +3,16 @@ function model {
   local comment=
 
   exif_field model Model "${photo_path}"
+  if [[ ${model} ]] ; then
+    first_n_words model 2
+  fi
 
-  if [[ ${lowercase_photo_path} =~ thumbnail ]] ; then
-    model=thumbnail
-  elif [[ ${lowercase_photo_path} =~ previews ]] ; then
-    model=preview
+  if [[ -z ${model} ]] ; then
+    if [[ ${lowercase_photo_path} =~ thumbnail ]] ; then
+      model=thumbnail
+    elif [[ ${lowercase_photo_path} =~ previews ]] ; then
+      model=preview
+    fi
   fi
 
   # Picasa and Facebook list themselves in Software
@@ -25,9 +30,9 @@ function model {
     first_n_words model 2
   fi
 
-  local lowercase_photo_path=${photo_path,,}
-
   if [[ -z ${model} ]] ; then
+    local lowercase_photo_path=${photo_path,,}
+
     if [[ ${lowercase_photo_path} =~ webcam ]] ; then
       model=webcam
     elif [[ ${lowercase_photo_path} =~ iphone ]] ; then

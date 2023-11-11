@@ -104,6 +104,9 @@ function exif_field {
   exif_field_name=$2
   path=$3
   var=$(exiftool -json -${exif_field_name} "${path}" | jq --raw-output ".[0].${exif_field_name}")
+  if [[ ${var} == "null" ]] ; then
+    var=
+  fi
 }
 
 if [[ $# -ne 2 ]] ; then
