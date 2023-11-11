@@ -4,6 +4,12 @@ Organize photos using EXIF info from exiftool
 > NOTE: currently the files are not copied; a filename is created with
 > touch to simulate what would happen for testing.
 
+# Why BASH?
+
+It hurts so good.
+Also, it's built into many Linux distros.
+Honestly, I don't really know.
+
 ## Main file:
 - photo_org.sh
 
