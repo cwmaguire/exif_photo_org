@@ -21,7 +21,7 @@ function model {
 
   if [[ -z ${model} ]] ; then
     exif_field model LensModel "${photo_path}"
-    # for "iPhone 52 ...", "iPod touch ..."
+    # for "iPhone 5s ...", "iPod touch ..."
     first_n_words model 2
   fi
 
@@ -49,7 +49,7 @@ function model {
 
   if [[ -z ${model} ]] ; then
     exif_field comment Comment "${photo_path}"
-    echo "Comment for ${photo_path} is ${comment}"
+    #echo "Comment for ${photo_path} is ${comment}"
     if [[ ${comment,,} =~ webcam ]] ; then
       model=webcam
     fi
@@ -60,6 +60,6 @@ function model {
     exiftool -json -s "${photo_path}"
   fi
 
-  model=${model/ /_/}
+  model=${model/ /_}
 }
 

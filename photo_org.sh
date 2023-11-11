@@ -27,12 +27,14 @@
 #    touch: cannot touch '2015/IMG_2584.PNG"_': No such file or directory
 #    touch: cannot touch '2015/IMG_2584.PNG"_378307.PNG': No such file or directory
 
-source photo_org_date.sh
-source photo_org_model.sh
-source photo_org_file_number.sh
-source photo_org_sequence_number.sh
+dir=${0%/*}
+
+source "${dir}/photo_org_date.sh"
+source "${dir}/photo_org_model.sh"
+source "${dir}/photo_org_file_number.sh"
+source "${dir}/photo_org_sequence_number.sh"
 #source photo_org_file_size.sh
-source photo_org_utility.sh
+source "${dir}/photo_org_utility.sh"
 
 function main {
   local out_dir=$1
@@ -101,8 +103,14 @@ function exif_field {
   declare -n var=$1
   exif_field_name=$2
   path=$3
-  var=$(exiftool -csv -${exif_field_name} "${path}" | tail -1 | awk -F, '{print $2}') # | sed -e 's/ /_/g'
+  var=$(exiftool -json -${exif_field_name} "${path}" | jq --raw-output ".[0].${exif_field_name}")
 }
+
+if [[ $# -ne 2 ]] ; then
+  echo -e "Called with $# args: $@"
+  echo "Usage: photo_org.sh <out_dir> <file path>"
+  exit 1
+fi
 
 out_dir=$1
 photo_path=$2

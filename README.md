@@ -15,7 +15,7 @@ Honestly, I don't really know.
 
 Currently I'm running it with this:
 ```
-find pics -iname "*.jpg" -or -iname "*.heic" -or -iname "*.png" -exec ./photo_org.sh pics3 {} \; | tee log2
+find pics -iname "*.jpg" -or -iname "*.heic" -or -iname "*.png" -exec ./photo_org.sh pics3 "{}" \; | tee log2
 ```
 ## Function files:
 - everything else

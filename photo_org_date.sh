@@ -1,6 +1,5 @@
 function create_date {
   local photo_path=$@
-
   exif_field create_date CreateDate "${photo_path}"
 
   if [[ -z ${create_date} ]] ; then
