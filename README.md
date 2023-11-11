@@ -41,8 +41,8 @@ Files are named D_M_N_Q_S.ext where
 Model comes from:
 1) "thumbnail" if the filename contains "thumbnail"
 2) "preview" if the filename contains "preview"
-3) first word of EXIF Software, e.g. Picasa
-4) first 2 words of LensModel, e.g. iPhone 5s
+3) first word of EXIF `Software`, e.g. Picasa
+4) first 2 words of `LensModel`, e.g. iPhone 5s
 5) filename keywords:
     1) webcam      -> webcam
     2) iphone      -> iPhone
@@ -52,7 +52,7 @@ Model comes from:
     6) /micro/     -> USB_microscope
     7) smugmug     -> smugmug
     8) screen shot -> screenshot
-6) "webcam" if the EXIF Comment contains "webcam"
+6) "webcam" if the EXIF `Comment` contains "webcam"
 
 # Notes to myself on BASH:
 - wrap params to functions in double quotes
