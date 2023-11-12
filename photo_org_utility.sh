@@ -47,3 +47,10 @@ function last_n_words {
   done
 
 }
+
+function rtrim {
+  declare -n var_=$1
+
+  var_=${var_%%  *} # trim multiple spaces
+  var_=${var_% }    # trim single space
+}

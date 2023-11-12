@@ -107,6 +107,7 @@ function exif_field {
   if [[ ${var} == "null" ]] ; then
     var=
   fi
+  rtrim var
 }
 
 if [[ $# -ne 2 ]] ; then
