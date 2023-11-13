@@ -4,6 +4,7 @@ function model {
 
   exif_field model Model "${photo_path}"
   if [[ ${model} ]] ; then
+    model=${model%%/*}
     first_n_words model 2
   fi
 
@@ -27,6 +28,12 @@ function model {
   if [[ -z ${model} ]] ; then
     exif_field model LensModel "${photo_path}"
     # for "iPhone 5s ...", "iPod touch ..."
+    first_n_words model 2
+  fi
+
+  if [[ -z ${model} ]] ; then
+    exif_field model Source "${photo_path}"
+    # for "Canon EOS ..."
     first_n_words model 2
   fi
 
@@ -65,6 +72,6 @@ function model {
     exiftool -json -s "${photo_path}"
   fi
 
-  model=${model/ /_}
+  model=${model// /_}
 }
 
