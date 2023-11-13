@@ -57,15 +57,21 @@ function main {
 
   exif_fields "${photo_path}"
 
-  photo_date=$(echo ${create_date} | awk -F'[: -]' '{print $1 "_" $2 "_" $3 "_" $4 "_" $5 "_" $6}')
-  photo_year=${photo_date%%_*}
-  photo_month=${photo_date#*_}
-  photo_month=${photo_month%%_*}
+  photo_date_fields=($(echo ${create_date} | awk -F'[: -]' '{print $1, $2, $3, $4, $5, $6}'))
+  photo_year=${photo_date_fields[0]:=0000}
+  photo_month=${photo_date_fields[1]:=00}
+  photo_day=${photo_date_fields[2]:=00}
+  photo_hour=${photo_date_fields[3]:=00}
+  photo_minute=${photo_date_fields[4]:=00}
+  photo_second=${photo_date_fields[5]:=00}
+  photo_date=${photo_year}_${photo_month}_${photo_day}_${photo_hour}_${photo_minute}_${photo_second}
+
   photo_dir=${out_dir}/${photo_year}/${photo_month}
   maybe_model=${model}${model:+_}
   maybe_num=${file_number}${file_number:+_}
   maybe_seq=${sequence_number}${sequence_number:+_}
   photo_name="${photo_date}_${maybe_model}${maybe_num}${maybe_seq}${file_size}"
+  #photo_name="${photo_date}_${maybe_model}${file_size}"
 
   # I'm keeping the extension off in case I want to disambiguate dupes with numbers,
   # e.g. _2, _3, _4
