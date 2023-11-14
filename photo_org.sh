@@ -17,15 +17,11 @@
 # - get dates for PNG/JPG files from the accompanying JSON file
 #   - e.g. /home/c/4tb/pics/goog_pics_2022/pics_2022/2022_chris_iphone_pics/Takeout/Google Photos/Photos from 2021/
 #   - maybe copy the JSON file as well
+#   - I'm not sure these JSON files contain anything the EXIF info doesn't already have
 #
 # - Look for DateTimeOriginal before FileModifyDate (DSCN0245.JPG)
 #
 # - Save picasaoriginal photos
-#
-# - Fix this:
-#    Copying IMG_2584.PNG from pics/goog_pics_2015/pics_2015/December 20, 2015/IMG_2584.PNG to pics3/2015/IMG/2584.PNG"/2015/IMG_2584.PNG"_______/2015/IMG_2584.PNG"_ 2015/IMG_2584.PNG"_ 2015/IMG_2584.PNG"_378307.PNGtouch: cannot touch 'pics3/2015/IMG/2584.PNG"/2015/IMG_2584.PNG"_______/2015/IMG_2584.PNG"_': No such file or directory
-#    touch: cannot touch '2015/IMG_2584.PNG"_': No such file or directory
-#    touch: cannot touch '2015/IMG_2584.PNG"_378307.PNG': No such file or directory
 
 dir=${0%/*}
 
@@ -33,7 +29,6 @@ source "${dir}/photo_org_date.sh"
 source "${dir}/photo_org_model.sh"
 source "${dir}/photo_org_file_number.sh"
 source "${dir}/photo_org_sequence_number.sh"
-#source photo_org_file_size.sh
 source "${dir}/photo_org_utility.sh"
 
 function main {
@@ -75,6 +70,7 @@ function main {
 
   # I'm keeping the extension off in case I want to disambiguate dupes with numbers,
   # e.g. _2, _3, _4
+  # For now I'm disambiguating with file sizes in the file name.
   out_path="${photo_dir}/${photo_name}"
 
   if [[ ! -d ${photo_dir} ]]; then
@@ -90,8 +86,8 @@ function main {
 
     # We don't actually have to copy the file to check if this works
     # We can just create an empty file
-    #cp "${photo_path}" ${out_path}.${ext}
-    touch ${out_path}.${ext}
+    cp "${photo_path}" ${out_path}.${ext}
+    #touch ${out_path}.${ext}
   fi
 
   echo ""

@@ -2,28 +2,18 @@ function create_date {
   local photo_path=$@
   exif_field create_date CreateDate "${photo_path}"
 
+  # could use an until loop here
+
   if [[ -z ${create_date} ]] ; then
     exif_field create_date ModifyDate "${photo_path}"
-
-    #if [[ -n ${create_date} ]] ; then
-      #echo "No CreateDate, got ModifyDate ${create_date}"
-    #fi
   fi
 
   if [[ -z ${create_date} ]] ; then
     exif_field create_date DateCreated "${photo_path}"
-
-    #if [[ -n ${create_date} ]] ; then
-    #  echo "No CreateDate or ModifiedDate, got DateCreated ${create_date}"
-    #fi
   fi
 
   if [[ -z ${create_date} ]] ; then
     exif_field create_date FileModifyDate "${photo_path}"
-
-    #if [[ -n ${create_date} ]] ; then
-      #echo "No CreateDate or ModifiedDate or DateCreated, got FileModifyDate ${create_date}"
-    #fi
   fi
 
   if [[ -z ${create_date} ]] ; then
