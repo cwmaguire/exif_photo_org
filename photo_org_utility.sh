@@ -5,8 +5,8 @@
 #  count=$2
 #  separator=$3
 #  first_n_words input $count $separator
-#            ^
-#            note the missing dollar sign; we're using nameref variable
+#                ^
+#                note the missing dollar sign; we're using nameref variable
 
 function first_n_words {
   declare -n var=$1
@@ -29,8 +29,8 @@ function first_n_words {
 #  count=$2
 #  separator=$3
 #  last_n_words input $count $separator
-#            ^
-#            note the missing dollar sign; we're using nameref variable
+#               ^
+#               note the missing dollar sign; we're using nameref variable
 
 function last_n_words {
   declare -n var=$1
