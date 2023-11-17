@@ -38,10 +38,6 @@ function main {
   local ext=${photo_file##*.}
   local exif=
 
-  if [[ ${photo_file} =~ ^[.] ]] ; then
-    echo "Filename (${photo_path}) starts with dot"
-  fi
-
   # exif field variables
   local create_date=
   local model=
@@ -86,8 +82,9 @@ function main {
 
     # We don't actually have to copy the file to check if this works
     # We can just create an empty file
-    cp "${photo_path}" ${out_path}.${ext}
     #touch ${out_path}.${ext}
+
+    cp "${photo_path}" ${out_path}.${ext}
   fi
 
   echo ""
@@ -95,6 +92,7 @@ function main {
 
 function exif_fields {
   local photo_path=$@
+  # these functions are in sourced scripts
   create_date ${photo_path}
   model ${photo_path}
   file_number ${photo_path}

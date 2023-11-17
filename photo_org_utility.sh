@@ -4,7 +4,7 @@
 #  input=$1
 #  count=$2
 #  separator=$3
-#  get_words input $count $separator
+#  first_n_words input $count $separator
 #            ^
 #            note the missing dollar sign; we're using nameref variable
 
@@ -28,7 +28,7 @@ function first_n_words {
 #  input=$1
 #  count=$2
 #  separator=$3
-#  get_words input $count $separator
+#  last_n_words input $count $separator
 #            ^
 #            note the missing dollar sign; we're using nameref variable
 
